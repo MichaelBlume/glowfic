@@ -113,7 +113,7 @@ $(document).ready(function() {
   var displayIconID = $("#current-icon").data('icon-id');
   if (selectedCharID != displayCharID) {
     getAndSetCharacterData(selectedCharID, {restore_icon: true});
-    $("#active_character").val(selectedCharID).trigger("change");
+    $("#active_character").val(selectedCharID).trigger("change.select2");
   } else {
     if ($(".gallery-icon").length > 1) { /* Bind icon & gallery only if not resetting character, else it duplicate binds */
       bindIcon();
