@@ -14,8 +14,15 @@ class PostPresenter
       board: post.board,
       section: post.section,
       user: post.user,
-      character: post.character,
+      character: character(post),
       icon: post.icon,
       replies: options[:replies] || post.replies.order('id asc') })
+  end
+
+  def character(post)
+    return unless post.character_id
+    { id: post.character_id,
+      name: post.name,
+      screenname: post.screenname }
   end
 end

@@ -40,5 +40,13 @@ RSpec.describe Api::V1::PostsController do
       expect(response.headers['Link']).not_to be_nil
       expect(response.json['data']['replies'].size).to eq(1)
     end
+
+    it "uses aliases" do
+      calias = create(:alias)
+      expect(calias.name).not_to eq(calias.character.name)
+      post = create(:post, character: calias.character, user: calias.character.user, character_alias: calias)
+      get :show, id: post.id
+      expect(response.json['data']['character']['name']).to eq(calias.name)
+    end
   end
 end

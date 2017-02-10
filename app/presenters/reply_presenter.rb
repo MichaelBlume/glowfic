@@ -19,7 +19,7 @@ class ReplyPresenter
   def character(reply)
     return unless reply.character_id
     { id: reply.character_id,
-      name: reply.character_name,
+      name: reply.name,
       screenname: reply.character_screenname }
   end
 
