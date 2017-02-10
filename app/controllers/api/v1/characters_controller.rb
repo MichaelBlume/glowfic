@@ -20,6 +20,7 @@ class Api::V1::CharactersController < Api::ApiController
     'url': 'http://www.example.com/image.png',
     'keyword': 'icon'
   },
+  'aliases': ['Example', 'Test'],
   'galleries': [
     {
       'name': 'Example 1',
@@ -39,7 +40,7 @@ class Api::V1::CharactersController < Api::ApiController
   }]
 }"
   def show
-    render json: {data: @character.as_json(include: [:galleries, :default])}
+    render json: {data: @character.as_json(include: [:galleries, :default, :aliases])}
   end
 
   api :PUT, '/characters/:id', 'Update a given character'
